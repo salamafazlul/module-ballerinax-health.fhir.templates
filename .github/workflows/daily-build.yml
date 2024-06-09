@@ -36,7 +36,7 @@ jobs:
           # Build and Generate Coverage Report With Ballerina
           for folder in "${BALLERINA_PROJECTS[@]}"; do
             pushd "$folder"
-            bal build
+            bal pack
             bal test --test-report --code-coverage --coverage-format=xml
             popd
           done
@@ -46,4 +46,3 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true # Optional: Specify if the CI build should fail when Codecov fails.
-          
